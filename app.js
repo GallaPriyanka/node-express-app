@@ -12,11 +12,16 @@ const logger = function (req, res, next) {
 
 app.use(logger)
 
-app.use('/styles', express.static(path.join(__dirname, './styles.css')));
+app.use(express.static('styles'));
 
 app.get('/', function (req, res) {
   console.log('Get request for /')
-  res.sendFile(path.join(__dirname, '/index.html'))
+  res.send('Welcome home!')
+})
+
+app.get('/styles/styles.css', function (req, res) {
+  console.log('Get request for styles.css')
+  res.sendFile(path.join(__dirname, '/styles/styles.css'))
 })
 
 app.get('/hello', (req, res) => {
@@ -26,7 +31,8 @@ app.get('/hello', (req, res) => {
 
 app.get('/big',  (req, res) =>{
   console.log('Get request for /big')
-  res.send('<h1>Hello World!</h1>')
+  res.send('<head><link rel=\'stylesheet\' href="./styles/styles.css" /></head><h1>Hello World!</h1>')
+  // res.send('<h1 style="color: pink">Hello World!</h1>')
 })
 
 app.get('/greeting/:id',  (req, res) =>{
@@ -36,7 +42,8 @@ app.get('/greeting/:id',  (req, res) =>{
 
 app.get('/yo/:buddy',  (req, res) =>{
   console.log('Get request for /yo/:buddy')
-  res.send('<h1>Yo, ' + req.params.buddy + '!</h1>')
+  res.send('<head><link rel=\'stylesheet\' href="./styles/styles.css" /></head><h1>Yo, ' + req.params.buddy + '!</h1>')
+  // res.send('<h1 style="color: pink">Yo, ' + req.params.buddy + '!</h1>')
 })
 
 // handle non-existant routes
