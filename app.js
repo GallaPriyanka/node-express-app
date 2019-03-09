@@ -5,11 +5,12 @@ const path = require('path')
 const hostname = '0.0.0.0'   // allows remote computers to access
 const port = 3002
 
-app.use('/styles', express.static(path.join(__dirname, './styles')));
+app.use(express.static(path.join(__dirname, './styles')));
 
 app.get('/', function (req, res) {
   console.log('Get request for /')
-  res.send('Welcome home!')
+  // 
+    res.sendFile(path.join(__dirname, '/index.html'))
 })
 
 app.get('/hello', (req, res) => {
