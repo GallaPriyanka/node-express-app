@@ -31,7 +31,7 @@ app.get('/hello', (req, res) => {
 
 app.get('/big',  (req, res) =>{
   console.log('Get request for /big')
-  res.send('<head><link rel=\'stylesheet\' href="./styles/styles.css" /></head><h1>Hello World!</h1>')
+  res.send('<head><link rel=\'stylesheet\' href="/styles/styles.css" /></head><h1>Hello World!</h1>')
   // res.send('<h1 style="color: pink">Hello World!</h1>')
 })
 
@@ -42,7 +42,7 @@ app.get('/greeting/:id',  (req, res) =>{
 
 app.get('/yo/:buddy',  (req, res) =>{
   console.log('Get request for /yo/:buddy')
-  res.send('<head><link rel=\'stylesheet\' href="./styles/styles.css" /></head><h1>Yo, ' + req.params.buddy + '!</h1>')
+  res.send('<head><link rel=\'stylesheet\' href="/styles/styles.css" /></head><h1>Yo, ' + req.params.buddy + '!</h1>')
   // res.send('<h1 style="color: pink">Yo, ' + req.params.buddy + '!</h1>')
 })
 
